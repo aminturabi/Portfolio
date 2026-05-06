@@ -334,3 +334,14 @@ a, button, input, textarea, .nav-link, .interactive-card {
         background: rgba(255, 255, 255, 0.95);
     }
 }
+
+/* Disable custom cursor on touch devices (mobile/tablets) */
+@media (hover: none) and (pointer: coarse) {
+    .cursor-dot, .cursor-outline {
+        display: none !important;
+    }
+    
+    body, a, button, input, textarea, .nav-link, .interactive-card {
+        cursor: auto !important;
+    }
+}
