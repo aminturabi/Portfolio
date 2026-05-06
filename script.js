@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Handle form submission (prevent default for demo)
+    // Handle form submission using FormSubmit
     const contactForm = document.querySelector('form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
@@ -124,11 +124,29 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn = contactForm.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
             
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
             btn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin ms-2"></i>';
             btn.disabled = true;
 
-            // Simulate API call
-            setTimeout(() => {
+            // Call FormSubmit API
+            fetch("https://formsubmit.co/ajax/aminturabi594@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    message: message,
+                    _subject: "New Message from Portfolio Website!"
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
                 btn.innerHTML = 'Message Sent! <i class="fas fa-check ms-2"></i>';
                 btn.classList.replace('btn-gradient', 'btn-success');
                 contactForm.reset();
@@ -138,7 +156,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.classList.replace('btn-success', 'btn-gradient');
                     btn.disabled = false;
                 }, 3000);
-            }, 1500);
+            })
+            .catch(error => {
+                console.error("Form submission error:", error);
+                btn.innerHTML = 'Error! Try Again <i class="fas fa-times ms-2"></i>';
+                btn.classList.replace('btn-gradient', 'btn-danger');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.replace('btn-danger', 'btn-gradient');
+                    btn.disabled = false;
+                }, 3000);
+            });
         });
     }
 });
