@@ -4,7 +4,7 @@
     --secondary: #7209b7;
     --accent: #00b4d8;
     --text-main: #2b2d42;
-    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-bg: rgba(255, 255, 255, 0.60);
     --glass-border: rgba(255, 255, 255, 0.6);
     --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
     --card-bg: rgba(255, 255, 255, 0.75);
@@ -53,10 +53,7 @@ a, button, input, textarea, .nav-link, .interactive-card {
 }
 
 .cursor-outline {
-    width: 40px;
-    height: 40px;
-    border: 2px solid var(--secondary);
-    transition: left 0.1s ease-out, top 0.1s ease-out, width 0.2s, height 0.2s, background-color 0.2s;
+    display: none !important;
 }
 
 .cursor-dot, .cursor-outline {
@@ -79,6 +76,17 @@ a, button, input, textarea, .nav-link, .interactive-card {
     z-index: -1;
     overflow: hidden;
     pointer-events: none;
+}
+
+/* Particle background canvas */
+#bg-canvas{
+    position: fixed;
+    inset: 0;
+    z-index: -1; /* keep canvas behind content so particles show through glass panels */
+    display: block;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
 }
 
 .orb {
@@ -194,7 +202,8 @@ a, button, input, textarea, .nav-link, .interactive-card {
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(8px);
     box-shadow: var(--glass-shadow);
-    transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    color: var(--text-main);
+    transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, color 0.4s ease;
 }
 
 .glass-btn {
