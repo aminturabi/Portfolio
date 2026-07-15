@@ -195,35 +195,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(!bgCanvas) return;
 
                 const getParticleOpts = (theme)=>{
+                        const isMobile = window.innerWidth < 768;
                         if(theme === 'dark'){
                                 return {
-                                        density: 90,
-                                        linkDistance: 130,
-                                        speed: 3,
+                                        density: isMobile ? 30 : 90,
+                                        linkDistance: isMobile ? 85 : 130,
+                                        speed: isMobile ? 1.5 : 3,
                                         particleColor: '52,227,176',
                                         linkColor: '130,150,170',
                                         cursorColor: '177,140,255',
-                                        cursorRadius: 160,
-                                        cursorForce: 0.6,
-                                        dotSize: [1.1,2.6]
+                                        cursorRadius: isMobile ? 80 : 160,
+                                        cursorForce: isMobile ? 0.4 : 0.6,
+                                        dotSize: isMobile ? [0.8, 1.8] : [1.1,2.6]
                                 };
                         }
                         // light theme opts (higher contrast on pale backgrounds)
-                            return {
-                                density: 88,
-                                linkDistance: 150,
-                                speed: 2.2,
+                        return {
+                                density: isMobile ? 30 : 88,
+                                linkDistance: isMobile ? 90 : 150,
+                                speed: isMobile ? 1.2 : 2.2,
                                 particleColor: '33,80,160',   // darker blue for contrast on light bg
                                 linkColor: '70,95,150',       // darker link color
                                 particleAlpha: 1.0,
                                 linkAlpha: 0.9,
-                                glowBlur: 14,
+                                glowBlur: isMobile ? 8 : 14,
                                 glowColor: '33,80,160',
                                 cursorColor: '67,97,238',     // bright accent cursor
-                                cursorRadius: 120,
-                                cursorForce: 0.45,
-                                dotSize: [1.6,3.2]
-                            };
+                                cursorRadius: isMobile ? 70 : 120,
+                                cursorForce: isMobile ? 0.3 : 0.45,
+                                dotSize: isMobile ? [1.1, 2.2] : [1.6,3.2]
+                        };
                 };
 
                 class ParticleNetwork{
@@ -245,6 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         this.mouse = { x: -9999, y: -9999, active:false };
                         this.particles = [];
                         this.dpr = Math.min(window.devicePixelRatio || 1, 2);
+                        this.isMobileDevice = window.innerWidth < 768;
 
                         this._resize = this._resize.bind(this);
                         this._onMove = this._onMove.bind(this);
@@ -254,10 +256,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         window.addEventListener('resize', this._resize);
                         window.addEventListener('mousemove', this._onMove);
                         window.addEventListener('mouseleave', this._onLeave);
+                        
+                        // Mobile touch support to interact with particles
+                        window.addEventListener('touchstart', (e)=>{ if(e.touches[0]) this._onMove(e.touches[0]); }, {passive:true});
                         window.addEventListener('touchmove', (e)=>{ if(e.touches[0]) this._onMove(e.touches[0]); }, {passive:true});
+                        window.addEventListener('touchend', this._onLeave);
+                        window.addEventListener('touchcancel', this._onLeave);
 
                         this._resize();
-                        this._spawn();
                         requestAnimationFrame(this._tick);
                     }
 
@@ -265,10 +271,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     _resize(){
                         const { canvas, dpr } = this;
+                        const wasMobile = this.isMobileDevice;
+                        this.isMobileDevice = window.innerWidth < 768;
+
                         this.w = canvas.width = window.innerWidth * dpr;
                         this.h = canvas.height = window.innerHeight * dpr;
                         canvas.style.width = window.innerWidth + 'px';
                         canvas.style.height = window.innerHeight + 'px';
+
+                        // If transitioning between mobile and desktop layout, or first load, recreate particles
+                        if (wasMobile !== this.isMobileDevice || this.particles.length === 0) {
+                            const currentTheme = document.documentElement.getAttribute('data-bs-theme') || 'light';
+                            this.updateOptions(getParticleOpts(currentTheme));
+                            this._spawn();
+                        }
                     }
 
                     _spawn(){
