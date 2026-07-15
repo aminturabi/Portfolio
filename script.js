@@ -41,6 +41,34 @@ document.addEventListener('DOMContentLoaded', () => {
         cursorOutline.style.opacity = 1;
     });
 
+    // Theme Switcher Logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (themeToggleBtn) {
+        const themeToggleIcon = themeToggleBtn.querySelector('i');
+        
+        const updateToggleIcon = (theme) => {
+            if (theme === 'dark') {
+                themeToggleIcon.classList.replace('fa-moon', 'fa-sun');
+                themeToggleIcon.style.color = 'var(--accent)';
+            } else {
+                themeToggleIcon.classList.replace('fa-sun', 'fa-moon');
+                themeToggleIcon.style.color = 'var(--primary)';
+            }
+        };
+
+        // Set initial icon based on document attribute set by inline script
+        const currentTheme = document.documentElement.getAttribute('data-bs-theme') || 'light';
+        updateToggleIcon(currentTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const activeTheme = document.documentElement.getAttribute('data-bs-theme');
+            const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-bs-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleIcon(newTheme);
+        });
+    }
 
     // Reveal elements on scroll
     const reveals = document.querySelectorAll('.reveal');

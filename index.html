@@ -13,9 +13,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css">
+  <!-- Theme initialization (prevents flash) -->
+  <script>
+    (function() {
+      const storedTheme = localStorage.getItem('theme');
+      const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-bs-theme', theme);
+    })();
+  </script>
 </head>
 
-<body data-bs-theme="light">
+<body>
   <!-- Custom Cursor -->
   <div class="cursor-dot"></div>
   <div class="cursor-outline"></div>
@@ -30,16 +38,22 @@
   <nav class="navbar navbar-expand-lg fixed-top glass-nav">
     <div class="container">
       <a class="navbar-brand text-gradient fw-bold fs-3" href="#hero">AK.</a>
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <i class="fas fa-bars text-dark"></i>
-      </button>
+      <div class="d-flex align-items-center gap-2">
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="btn p-2" aria-label="Toggle Theme">
+          <i class="fas fa-moon fs-5"></i>
+        </button>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav gap-2 gap-lg-4">
-          <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#experience">Experience</a></li>
-          <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#education">Education & Skills</a></li>
-          <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="#education">Education & Skills</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -50,7 +64,7 @@
     <div class="container text-center pt-5 mt-5">
       <div class="hero-content reveal">
         <p class="text-uppercase tracking-widest text-accent mb-3 fw-bold subtitle">Hi, I'm</p>
-        <h1 class="display-1 fw-bold mb-3 text-dark">Amin Khan</h1>
+        <h1 class="display-1 fw-bold mb-3">Amin Khan</h1>
         <h3 class="h2 text-gradient mb-4">Junior AI & Machine Learning Engineer</h3>
         <p class="lead mb-5 text-secondary max-w-2xl mx-auto" style="max-width: 600px;">
           "Turning AI research into real-world intelligent systems"
@@ -63,7 +77,7 @@
         </div>
         <div class="d-flex justify-content-center gap-3 flex-wrap">
           <a href="#projects" class="btn btn-gradient px-4 py-2 rounded-pill fw-bold">View My Work</a>
-          <a href="Amin_Khan_Resume.pdf" download="Amin_Khan_Resume.pdf" class="btn glass-btn px-4 py-2 rounded-pill fw-bold text-dark">Download Resume</a>
+          <a href="Amin_Khan_Resume.pdf" download="Amin_Khan_Resume.pdf" class="btn glass-btn px-4 py-2 rounded-pill fw-bold">Download Resume</a>
         </div>
       </div>
     </div>
@@ -72,7 +86,7 @@
   <!-- About Section -->
   <section id="about" class="py-5">
     <div class="container py-5">
-      <h2 class="section-title reveal text-dark">About Me</h2>
+      <h2 class="section-title reveal">About Me</h2>
       <div class="row align-items-center g-5 reveal">
         <div class="col-lg-5">
           <div class="profile-card glass-panel p-3 rounded-4 position-relative">
@@ -94,21 +108,21 @@
                 <div
                   class="glass-stat p-4 rounded-4 h-100 d-flex flex-column align-items-center justify-content-center interactive-card">
                   <i class="fas fa-brain fs-1 text-gradient mb-3"></i>
-                  <h5 class="mb-0 fw-bold text-dark">NLP</h5>
+                  <h5 class="mb-0 fw-bold">NLP</h5>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div
                   class="glass-stat p-4 rounded-4 h-100 d-flex flex-column align-items-center justify-content-center interactive-card">
                   <i class="fas fa-network-wired fs-1 text-gradient mb-3"></i>
-                  <h5 class="mb-0 fw-bold text-dark">ML Pipelines</h5>
+                  <h5 class="mb-0 fw-bold">ML Pipelines</h5>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div
                   class="glass-stat p-4 rounded-4 h-100 d-flex flex-column align-items-center justify-content-center interactive-card">
                   <i class="fas fa-server fs-1 text-gradient mb-3"></i>
-                  <h5 class="mb-0 fw-bold text-dark">Deployment</h5>
+                  <h5 class="mb-0 fw-bold">Deployment</h5>
                 </div>
               </div>
             </div>
@@ -121,14 +135,14 @@
   <!-- Experience Section -->
   <section id="experience" class="py-5 position-relative">
     <div class="container py-5">
-      <h2 class="section-title reveal text-dark">Experience</h2>
+      <h2 class="section-title reveal">Experience</h2>
       <div class="row reveal">
         <div class="col-12">
           <div class="timeline position-relative">
             <!-- Timeline track -->
             <div
               class="position-absolute h-100 border-start border-2 border-primary border-opacity-25 ms-3 d-none d-md-block">
-            </div>
+            </div>Document
 
             <div class="position-relative ps-md-5 mb-5 interactive-card">
               <!-- Timeline dot -->
@@ -141,7 +155,7 @@
                   <span
                     class="badge bg-primary bg-opacity-10 text-primary p-2 px-3 rounded-pill fs-6 mt-3 mt-md-0 border border-primary border-opacity-25">2025</span>
                 </div>
-                <h4 class="h5 text-dark mb-4"><i class="fas fa-building me-2 text-accent"></i>CodeClub Software House
+                <h4 class="h5 mb-4"><i class="fas fa-building me-2 text-accent"></i>CodeClub Software House
                 </h4>
                 <ul class="list-unstyled text-secondary fs-5 lh-lg mb-0">
                   <li class="d-flex mb-2"><i class="fas fa-check-circle text-primary mt-2 me-3"></i> <span>Integrated ML
@@ -162,7 +176,7 @@
   <!-- Projects Section -->
   <section id="projects" class="py-5">
     <div class="container py-5">
-      <h2 class="section-title reveal text-dark">Featured Project</h2>
+      <h2 class="section-title reveal">Featured Project</h2>
       <div class="row reveal">
         <div class="col-12">
           <div class="glass-panel rounded-4 overflow-hidden interactive-card border-0">
@@ -172,7 +186,7 @@
                   <div class="bg-primary bg-opacity-10 p-3 rounded-3 me-4">
                     <i class="fas fa-robot fs-2 text-gradient"></i>
                   </div>
-                  <h3 class="h2 mb-0 fw-bold text-dark">AI Resume Screening & Ranking System</h3>
+                  <h3 class="h2 mb-0 fw-bold">AI Resume Screening & Ranking System</h3>
                 </div>
                 <p class="fs-5 text-secondary mb-4 lh-base">
                   An automated hiring workflow system leveraging advanced NLP techniques to evaluate and rank candidate
@@ -182,34 +196,34 @@
                   <div class="d-flex align-items-start mb-3">
                     <i class="fas fa-layer-group text-primary mt-1 me-3 fs-5"></i>
                     <div>
-                      <strong class="d-block text-dark mb-1">Sentence-BERT Pipeline</strong>
+                      <strong class="d-block mb-1">Sentence-BERT Pipeline</strong>
                       <span>Implemented semantic matching to accurately score resume relevance.</span>
                     </div>
                   </div>
                   <div class="d-flex align-items-start mb-3">
                     <i class="fas fa-desktop text-primary mt-1 me-3 fs-5"></i>
                     <div>
-                      <strong class="d-block text-dark mb-1">Interactive UI</strong>
+                      <strong class="d-block mb-1">Interactive UI</strong>
                       <span>Developed a user-friendly frontend utilizing Streamlit for seamless interaction.</span>
                     </div>
                   </div>
                   <div class="d-flex align-items-start">
                     <i class="fas fa-bolt text-primary mt-1 me-3 fs-5"></i>
                     <div>
-                      <strong class="d-block text-dark mb-1">Real-world Impact</strong>
+                      <strong class="d-block mb-1">Real-world Impact</strong>
                       <span>Automated the hiring workflow, significantly reducing manual screening time for HR.</span>
                     </div>
                   </div>
                 </div>
                 <div class="d-flex gap-2 flex-wrap mt-3">
-                  <span class="badge rounded-pill glass-badge text-dark px-3 py-2 fw-normal">Python</span>
-                  <span class="badge rounded-pill glass-badge text-dark px-3 py-2 fw-normal">NLP</span>
-                  <span class="badge rounded-pill glass-badge text-dark px-3 py-2 fw-normal">Streamlit</span>
-                  <span class="badge rounded-pill glass-badge text-dark px-3 py-2 fw-normal">HuggingFace</span>
+                  <span class="badge rounded-pill glass-badge px-3 py-2 fw-normal">Python</span>
+                  <span class="badge rounded-pill glass-badge px-3 py-2 fw-normal">NLP</span>
+                  <span class="badge rounded-pill glass-badge px-3 py-2 fw-normal">Streamlit</span>
+                  <span class="badge rounded-pill glass-badge px-3 py-2 fw-normal">HuggingFace</span>
                 </div>
                 <div class="d-flex gap-3 mt-4 pt-3 border-top border-primary border-opacity-25 mt-auto">
                   <a href="https://airesume-ranker.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn btn-gradient px-4 py-2 rounded-pill fw-bold">Live Demo <i class="fas fa-external-link-alt ms-2"></i></a>
-                  <a href="https://github.com/aminturabi/ai-resume-ranker" target="_blank" rel="noopener noreferrer" class="btn glass-btn px-4 py-2 rounded-pill fw-bold text-dark">GitHub <i class="fab fa-github ms-2"></i></a>
+                  <a href="https://github.com/aminturabi/ai-resume-ranker" target="_blank" rel="noopener noreferrer" class="btn glass-btn px-4 py-2 rounded-pill fw-bold">GitHub <i class="fab fa-github ms-2"></i></a>
                 </div>
               </div>
               <div class="col-lg-6 order-1 order-lg-2">
@@ -232,12 +246,12 @@
                       <div
                         class="upload-area p-4 rounded-4 border border-dashed border-primary border-opacity-50 w-100 mb-4 bg-white">
                         <i class="fas fa-cloud-upload-alt fs-1 text-primary mb-3"></i>
-                        <h5 class="text-dark fw-bold">Upload Resumes</h5>
+                        <h5 class="fw-bold">Upload Resumes</h5>
                         <p class="text-secondary small mb-0">Drag and drop or click to browse (.pdf, .docx)</p>
                       </div>
                       <div class="w-100">
                         <div class="d-flex justify-content-between mb-2">
-                          <span class="small text-dark fw-semibold">Processing candidate_3.pdf</span>
+                          <span class="small fw-semibold">Processing candidate_3.pdf</span>
                           <span class="small text-accent fw-bold">75%</span>
                         </div>
                         <div class="progress rounded-pill bg-secondary bg-opacity-25" style="height: 8px;">
@@ -262,7 +276,7 @@
       <div class="row g-5">
         <!-- Education & Languages -->
         <div class="col-lg-6 reveal">
-          <h2 class="section-title text-dark">Education</h2>
+          <h2 class="section-title">Education</h2>
           <div class="timeline position-relative ps-4 ms-2 border-start border-primary border-opacity-25 mb-5">
             <div class="timeline-dot bg-gradient position-absolute rounded-circle"
               style="width: 16px; height: 16px; left: -9px; top: 0;"></div>
@@ -283,14 +297,14 @@
             </div>
           </div>
 
-          <h2 class="section-title text-dark">Languages</h2>
+          <h2 class="section-title">Languages</h2>
           <div class="glass-panel p-4 rounded-4 d-flex flex-column gap-3">
             <div class="d-flex align-items-center p-3 rounded-3 bg-white bg-opacity-50">
               <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-4">
                 <i class="fas fa-globe text-primary fs-5"></i>
               </div>
               <div>
-                <h5 class="mb-1 fw-bold text-dark">English</h5>
+                <h5 class="mb-1 fw-bold">English</h5>
                 <span
                   class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25">Professional</span>
               </div>
@@ -300,7 +314,7 @@
                 <i class="fas fa-comments text-secondary fs-5"></i>
               </div>
               <div>
-                <h5 class="mb-1 fw-bold text-dark">Urdu</h5>
+                <h5 class="mb-1 fw-bold">Urdu</h5>
                 <span
                   class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25">Native</span>
               </div>
@@ -310,7 +324,7 @@
                 <i class="fas fa-language text-accent fs-5"></i>
               </div>
               <div>
-                <h5 class="mb-1 fw-bold text-dark">Pashto</h5>
+                <h5 class="mb-1 fw-bold">Pashto</h5>
                 <span
                   class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25">Native</span>
               </div>
@@ -320,17 +334,17 @@
 
         <!-- Skills -->
         <div class="col-lg-6 reveal">
-          <h2 class="section-title text-dark">Skills & Tools</h2>
+          <h2 class="section-title">Skills & Tools</h2>
           <div class="glass-panel p-4 p-md-5 rounded-4 h-100">
 
             <div class="mb-5">
               <h4 class="h6 text-uppercase text-accent fw-bold mb-4 d-flex align-items-center"><i
                   class="fas fa-code me-3 fs-5"></i>Programming Languages</h4>
               <div class="d-flex flex-wrap gap-2">
-                <span class="badge glass-badge text-dark fs-6 py-2 px-4 rounded-pill">Python</span>
-                <span class="badge glass-badge text-dark fs-6 py-2 px-4 rounded-pill">SQL</span>
-                <span class="badge glass-badge text-dark fs-6 py-2 px-4 rounded-pill">C++</span>
-                <span class="badge glass-badge text-dark fs-6 py-2 px-4 rounded-pill">Dart</span>
+                <span class="badge glass-badge fs-6 py-2 px-4 rounded-pill">Python</span>
+                <span class="badge glass-badge fs-6 py-2 px-4 rounded-pill">SQL</span>
+                <span class="badge glass-badge fs-6 py-2 px-4 rounded-pill">C++</span>
+                <span class="badge glass-badge fs-6 py-2 px-4 rounded-pill">Dart</span>
               </div>
             </div>
 
@@ -338,21 +352,21 @@
               <h4 class="h6 text-uppercase text-accent fw-bold mb-4 d-flex align-items-center"><i
                   class="fas fa-brain me-3 fs-5"></i>AI & Machine Learning</h4>
               <div class="mb-3">
-                <div class="d-flex justify-content-between mb-2"><span class="fw-semibold text-dark">Scikit-learn /
+                <div class="d-flex justify-content-between mb-2"><span class="fw-semibold">Scikit-learn /
                     XGBoost</span><span class="text-secondary small fw-bold">90%</span></div>
                 <div class="progress rounded-pill bg-secondary bg-opacity-25" style="height: 8px;">
                   <div class="progress-bar bg-gradient w-90"></div>
                 </div>
               </div>
               <div class="mb-3">
-                <div class="d-flex justify-content-between mb-2"><span class="fw-semibold text-dark">Pandas /
+                <div class="d-flex justify-content-between mb-2"><span class="fw-semibold">Pandas /
                     NumPy</span><span class="text-secondary small fw-bold">95%</span></div>
                 <div class="progress rounded-pill bg-secondary bg-opacity-25" style="height: 8px;">
                   <div class="progress-bar bg-gradient w-95"></div>
                 </div>
               </div>
               <div class="mb-3">
-                <div class="d-flex justify-content-between mb-2"><span class="fw-semibold text-dark">OpenCV</span><span
+                <div class="d-flex justify-content-between mb-2"><span class="fw-semibold">OpenCV</span><span
                     class="text-secondary small fw-bold">80%</span></div>
                 <div class="progress rounded-pill bg-secondary bg-opacity-25" style="height: 8px;">
                   <div class="progress-bar bg-gradient w-80"></div>
@@ -364,9 +378,9 @@
               <h4 class="h6 text-uppercase text-accent fw-bold mb-4 d-flex align-items-center"><i
                   class="fas fa-layer-group me-3 fs-5"></i>Frameworks</h4>
               <div class="d-flex flex-wrap gap-2">
-                <span class="badge glass-badge text-dark fs-6 py-2 px-4 rounded-pill">Streamlit</span>
-                <span class="badge glass-badge text-dark fs-6 py-2 px-4 rounded-pill">Flask</span>
-                <span class="badge glass-badge text-dark fs-6 py-2 px-4 rounded-pill">Flutter</span>
+                <span class="badge glass-badge fs-6 py-2 px-4 rounded-pill">Streamlit</span>
+                <span class="badge glass-badge fs-6 py-2 px-4 rounded-pill">Flask</span>
+                <span class="badge glass-badge fs-6 py-2 px-4 rounded-pill">Flutter</span>
               </div>
             </div>
 
@@ -374,10 +388,10 @@
               <h4 class="h6 text-uppercase text-accent fw-bold mb-4 d-flex align-items-center"><i
                   class="fas fa-tools me-3 fs-5"></i>Developer Tools</h4>
               <div class="d-flex flex-wrap gap-2">
-                <span class="badge glass-badge text-dark fs-6 py-2 px-4 rounded-pill">Git</span>
-                <span class="badge glass-badge text-dark fs-6 py-2 px-4 rounded-pill">GitHub</span>
-                <span class="badge glass-badge text-dark fs-6 py-2 px-4 rounded-pill">VS Code</span>
-                <span class="badge glass-badge text-dark fs-6 py-2 px-4 rounded-pill">CVAT</span>
+                <span class="badge glass-badge fs-6 py-2 px-4 rounded-pill">Git</span>
+                <span class="badge glass-badge fs-6 py-2 px-4 rounded-pill">GitHub</span>
+                <span class="badge glass-badge fs-6 py-2 px-4 rounded-pill">VS Code</span>
+                <span class="badge glass-badge fs-6 py-2 px-4 rounded-pill">CVAT</span>
               </div>
             </div>
           </div>
@@ -391,7 +405,7 @@
     <div class="position-absolute top-50 start-50 translate-middle w-100 h-100 bg-primary opacity-5"
       style="filter: blur(100px); z-index: -1;"></div>
     <div class="container py-5 text-center reveal">
-      <h2 class="display-4 fw-bold mb-3 text-dark">Let's Collaborate</h2>
+      <h2 class="display-4 fw-bold mb-3">Let's Collaborate</h2>
       <p class="lead text-secondary mb-5 max-w-2xl mx-auto" style="max-width: 600px;">
         Interested in building intelligent solutions together? Get in touch and let's discuss how we can turn your ideas
         into reality.
@@ -402,16 +416,16 @@
           <form class="glass-panel p-4 p-md-5 rounded-4 text-start position-relative overflow-hidden">
             <div class="row g-4">
               <div class="col-md-6">
-                <label for="name" class="form-label text-dark fw-semibold ms-1">Full Name</label>
+                <label for="name" class="form-label fw-semibold ms-1">Full Name</label>
                 <input type="text" class="form-control glass-input rounded-4 py-2" id="name" placeholder="John Doe" required>
               </div>
               <div class="col-md-6">
-                <label for="email" class="form-label text-dark fw-semibold ms-1">Email Address</label>
+                <label for="email" class="form-label fw-semibold ms-1">Email Address</label>
                 <input type="email" class="form-control glass-input rounded-4 py-2" id="email"
                   placeholder="john@example.com" required>
               </div>
               <div class="col-12">
-                <label for="message" class="form-label text-dark fw-semibold ms-1">Your Message</label>
+                <label for="message" class="form-label fw-semibold ms-1">Your Message</label>
                 <textarea class="form-control glass-input rounded-4" id="message" rows="5"
                   placeholder="Tell me about your project or opportunity..." required></textarea>
               </div>

@@ -1,6 +1,5 @@
-:root {
-    /* Changed to Light Theme Variables */
-    --bg-light: #f4f7fb;
+:root, [data-bs-theme="light"] {
+    --bg: #f4f7fb;
     --primary: #4361ee;
     --secondary: #7209b7;
     --accent: #00b4d8;
@@ -8,15 +7,37 @@
     --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-border: rgba(255, 255, 255, 0.6);
     --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    --card-bg: rgba(255, 255, 255, 0.75);
+    --nav-link-color: rgba(0, 0, 0, 0.65);
+    --social-bg: #ffffff;
+    --scrollbar-thumb: rgba(0, 0, 0, 0.2);
+    --orb-opacity: 0.15;
+}
+
+[data-bs-theme="dark"] {
+    --bg: #07080b; /* Premium pitch/deep space black */
+    --primary: #5c7aff; /* Brighter neon blue for dark bg */
+    --secondary: #b5179e; /* Vibrant magenta/violet */
+    --accent: #4cc9f0; /* Neon cyan */
+    --text-main: #f8fafc; /* Elegant off-white text */
+    --glass-bg: rgba(13, 16, 26, 0.65); /* Translucent dark glass */
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+    --card-bg: rgba(20, 24, 38, 0.55); /* Sleek dark card container */
+    --nav-link-color: rgba(255, 255, 255, 0.75);
+    --social-bg: rgba(255, 255, 255, 0.05);
+    --scrollbar-thumb: rgba(255, 255, 255, 0.25);
+    --orb-opacity: 0.35; /* Enhanced glow for dark mode */
 }
 
 body {
-    background-color: var(--bg-light);
+    background-color: var(--bg);
     color: var(--text-main);
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     scroll-behavior: smooth;
     cursor: none; /* Hide default cursor */
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Hide default cursor on interactive elements as well */
@@ -64,7 +85,8 @@ a, button, input, textarea, .nav-link, .interactive-card {
     position: absolute;
     border-radius: 50%;
     filter: blur(120px);
-    opacity: 0.15; /* Reduced opacity for light mode */
+    opacity: var(--orb-opacity);
+    transition: opacity 0.4s ease;
     animation: float 25s infinite ease-in-out alternate;
 }
 
@@ -149,13 +171,13 @@ a, button, input, textarea, .nav-link, .interactive-card {
     letter-spacing: 0.25em;
 }
 
-/* Glassmorphism - Light Mode */
+/* Glassmorphism Styles */
 .glass-nav {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--glass-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--glass-border);
-    transition: all 0.3s ease;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
 .glass-panel {
@@ -164,47 +186,53 @@ a, button, input, textarea, .nav-link, .interactive-card {
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
+    transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .glass-stat, .glass-badge {
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--card-bg);
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(8px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    box-shadow: var(--glass-shadow);
+    transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .glass-btn {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--glass-bg);
     backdrop-filter: blur(8px);
     border: 1px solid var(--glass-border);
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
     color: var(--text-main);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: var(--glass-shadow);
 }
 
 .glass-btn:hover {
-    background: rgba(255, 255, 255, 1);
-    border-color: rgba(67, 97, 238, 0.3);
-    color: var(--primary);
+    background: var(--text-main);
+    border-color: var(--primary);
+    color: var(--bg);
     transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 6px 15px rgba(67, 97, 238, 0.15);
 }
 
 .glass-input {
-    background: rgba(255, 255, 255, 0.9) !important;
-    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background: var(--card-bg) !important;
+    border: 1px solid var(--glass-border) !important;
     color: var(--text-main) !important;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, background-color 0.4s ease, border-color 0.4s ease;
 }
 
 .glass-input:focus {
-    background: #ffffff !important;
-    box-shadow: 0 0 15px rgba(67, 97, 238, 0.1) !important;
+    background: var(--bg) !important;
+    box-shadow: 0 0 15px rgba(67, 97, 238, 0.2) !important;
     border-color: var(--primary) !important;
 }
 
-.glass-input::placeholder {
+[data-bs-theme="light"] .glass-input::placeholder {
     color: rgba(0, 0, 0, 0.4);
+}
+
+[data-bs-theme="dark"] .glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
 }
 
 /* Specific Elements */
@@ -236,7 +264,7 @@ a, button, input, textarea, .nav-link, .interactive-card {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: white;
+    background: var(--social-bg);
     border: 1px solid var(--glass-border);
     display: flex;
     align-items: center;
@@ -244,8 +272,8 @@ a, button, input, textarea, .nav-link, .interactive-card {
     color: var(--text-main);
     font-size: 1.3rem;
     text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+    box-shadow: var(--glass-shadow);
 }
 
 .social-icon:hover {
@@ -276,7 +304,7 @@ a, button, input, textarea, .nav-link, .interactive-card {
 
 .nav-link {
     font-weight: 600 !important;
-    color: rgba(0, 0, 0, 0.6) !important;
+    color: var(--nav-link-color) !important;
     transition: color 0.3s ease;
     position: relative;
 }
@@ -319,19 +347,24 @@ a, button, input, textarea, .nav-link, .interactive-card {
     width: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: var(--bg-light);
+    background: var(--bg);
+    transition: background-color 0.4s ease;
 }
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--scrollbar-thumb);
     border-radius: 10px;
+    transition: background-color 0.4s ease;
 }
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary);
 }
 
 @media (max-width: 991.98px) {
-    .glass-nav {
-        background: rgba(255, 255, 255, 0.95);
+    [data-bs-theme="light"] .glass-nav {
+        background: rgba(244, 247, 251, 0.95);
+    }
+    [data-bs-theme="dark"] .glass-nav {
+        background: rgba(7, 8, 11, 0.95);
     }
 }
 
@@ -344,4 +377,58 @@ a, button, input, textarea, .nav-link, .interactive-card {
     body, a, button, input, textarea, .nav-link, .interactive-card {
         cursor: auto !important;
     }
+}
+
+/* Custom styles for Mockup Window and Theme Toggler */
+.navbar-toggler i {
+    color: var(--text-main);
+    transition: color 0.4s ease;
+}
+
+.mockup-window {
+    background-color: var(--card-bg) !important;
+    border-color: var(--glass-border) !important;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.mockup-header {
+    background-color: var(--glass-bg) !important;
+    border-color: var(--glass-border) !important;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.upload-area {
+    background-color: var(--bg) !important;
+    border-color: var(--glass-border) !important;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.project-preview {
+    background-color: var(--bg) !important;
+    transition: background-color 0.4s ease;
+}
+
+#theme-toggle {
+    border: none;
+    background: transparent;
+    cursor: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.3s ease;
+}
+
+#theme-toggle:hover {
+    background-color: var(--glass-border);
+}
+
+#theme-toggle i {
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+}
+
+#theme-toggle:hover i {
+    transform: rotate(30deg) scale(1.15);
 }
