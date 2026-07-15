@@ -388,6 +388,69 @@ a, button, input, textarea, .nav-link, .interactive-card {
     }
 }
 
+@media (max-width: 767.98px) {
+    body {
+        background-image: radial-gradient(circle at top left, rgba(67, 97, 238, 0.12), transparent 35%),
+                          radial-gradient(circle at bottom right, rgba(180, 68, 255, 0.12), transparent 30%);
+    }
+
+    .bg-elements {
+        height: calc(100vh + 100px);
+        width: 100%;
+    }
+
+    .orb {
+        opacity: 0.22;
+        filter: blur(90px);
+    }
+
+    .orb-1 {
+        width: 260px;
+        height: 260px;
+        top: -120px;
+        left: -80px;
+    }
+
+    .orb-2 {
+        width: 300px;
+        height: 300px;
+        bottom: -120px;
+        right: -60px;
+    }
+
+    #bg-canvas {
+        min-height: 100vh;
+    }
+
+    .hero-content {
+        padding: 0 1rem;
+    }
+
+    .display-1 {
+        font-size: 3rem;
+    }
+
+    .h2 {
+        font-size: 1.75rem;
+    }
+
+    .social-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+
+    .btn-gradient,
+    .glass-btn {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .hero-links {
+        gap: 1rem;
+    }
+}
+
 /* Custom styles for Mockup Window and Theme Toggler */
 .navbar-toggler i {
     color: var(--text-main);
