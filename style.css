@@ -1,33 +1,35 @@
 :root, [data-bs-theme="light"] {
-    --bg: #f4f7fb;
-    --primary: #4361ee;
-    --secondary: #7209b7;
-    --accent: #00b4d8;
-    --text-main: #2b2d42;
-    --glass-bg: rgba(255, 255, 255, 0.60);
-    --glass-border: rgba(255, 255, 255, 0.6);
-    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-    --card-bg: rgba(255, 255, 255, 0.75);
-    --nav-link-color: rgba(0, 0, 0, 0.65);
+    --bg: #ffffff; /* White background */
+    --primary: #002855; /* Navy */
+    --secondary: #001220; /* Deep Navy */
+    --accent: #00509d; /* Accent Navy */
+    --text-main: #000000; /* Black text */
+    --glass-bg: rgba(255, 255, 255, 0.70);
+    --glass-border: rgba(0, 40, 85, 0.12);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 32, 96, 0.06);
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --nav-link-color: rgba(0, 0, 0, 0.75);
     --social-bg: #ffffff;
-    --scrollbar-thumb: rgba(0, 0, 0, 0.2);
+    --scrollbar-thumb: rgba(0, 40, 85, 0.2);
     --orb-opacity: 0.15;
+    --btn-shadow: rgba(0, 40, 85, 0.2);
 }
 
 [data-bs-theme="dark"] {
-    --bg: #07080b; /* Premium pitch/deep space black */
-    --primary: #5c7aff; /* Brighter neon blue for dark bg */
-    --secondary: #b5179e; /* Vibrant magenta/violet */
-    --accent: #4cc9f0; /* Neon cyan */
-    --text-main: #f8fafc; /* Elegant off-white text */
-    --glass-bg: rgba(13, 16, 26, 0.65); /* Translucent dark glass */
+    --bg: #000000; /* Black background */
+    --primary: #3b82f6; /* Legible vibrant navy/blue on black bg */
+    --secondary: #001f3f; /* Deep Navy */
+    --accent: #60a5fa; /* Light Navy accent */
+    --text-main: #ffffff; /* White text */
+    --glass-bg: rgba(0, 8, 20, 0.75); /* Dark Navy glass */
     --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
-    --card-bg: rgba(20, 24, 38, 0.55); /* Sleek dark card container */
-    --nav-link-color: rgba(255, 255, 255, 0.75);
-    --social-bg: rgba(255, 255, 255, 0.05);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    --card-bg: rgba(0, 18, 40, 0.6); /* Sleek Navy card container */
+    --nav-link-color: rgba(255, 255, 255, 0.85);
+    --social-bg: rgba(0, 32, 96, 0.25);
     --scrollbar-thumb: rgba(255, 255, 255, 0.25);
-    --orb-opacity: 0.35; /* Enhanced glow for dark mode */
+    --orb-opacity: 0.35;
+    --btn-shadow: rgba(59, 130, 246, 0.35);
 }
 
 body {
@@ -168,7 +170,7 @@ a, button, input, textarea, .nav-link, .interactive-card {
 .btn-gradient:hover {
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(114, 9, 183, 0.2);
+    box-shadow: 0 10px 20px var(--btn-shadow);
 }
 
 .btn-gradient:hover::before {
@@ -220,7 +222,7 @@ a, button, input, textarea, .nav-link, .interactive-card {
     border-color: var(--primary);
     color: var(--bg);
     transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(67, 97, 238, 0.15);
+    box-shadow: 0 6px 15px var(--btn-shadow);
 }
 
 .glass-input {
@@ -289,7 +291,7 @@ a, button, input, textarea, .nav-link, .interactive-card {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     transform: translateY(-8px) rotate(8deg);
     color: white;
-    box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+    box-shadow: 0 10px 20px var(--btn-shadow);
     border-color: transparent;
 }
 
@@ -507,4 +509,35 @@ a, button, input, textarea, .nav-link, .interactive-card {
 
 #theme-toggle:hover i {
     transform: rotate(30deg) scale(1.15);
+}
+
+/* Custom styling to ensure experience text is full white */
+.experience-card {
+    background: #001f3f !important; /* Deep navy background for high contrast */
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.experience-card h3,
+.experience-card h4,
+.experience-card ul,
+.experience-card li,
+.experience-card span,
+.experience-card i {
+    color: #ffffff !important;
+}
+
+.experience-card .text-gradient {
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+}
+
+.experience-card .text-secondary {
+    color: rgba(255, 255, 255, 0.9) !important; /* Make secondary text almost full white */
+}
+
+.experience-card .badge {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
 }

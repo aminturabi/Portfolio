@@ -201,9 +201,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                         density: isMobile ? 30 : 90,
                                         linkDistance: isMobile ? 85 : 130,
                                         speed: isMobile ? 1.5 : 3,
-                                        particleColor: '52,227,176',
-                                        linkColor: '130,150,170',
-                                        cursorColor: '177,140,255',
+                                        particleColor: '255,255,255', // White particles on black background
+                                        linkColor: '59,130,246',      // Legible navy-blue links
+                                        cursorColor: '59,130,246',    // Navy-blue glow on cursor interaction
                                         cursorRadius: isMobile ? 80 : 160,
                                         cursorForce: isMobile ? 0.4 : 0.6,
                                         dotSize: isMobile ? [0.8, 1.8] : [1.1,2.6]
@@ -214,13 +214,13 @@ document.addEventListener('DOMContentLoaded', () => {
                                 density: isMobile ? 30 : 88,
                                 linkDistance: isMobile ? 90 : 150,
                                 speed: isMobile ? 1.2 : 2.2,
-                                particleColor: '33,80,160',   // darker blue for contrast on light bg
-                                linkColor: '70,95,150',       // darker link color
+                                particleColor: '0,40,85',     // Navy particles on white background
+                                linkColor: '0,40,85',         // Navy link color
                                 particleAlpha: 1.0,
                                 linkAlpha: 0.9,
                                 glowBlur: isMobile ? 8 : 14,
-                                glowColor: '33,80,160',
-                                cursorColor: '67,97,238',     // bright accent cursor
+                                glowColor: '0,40,85',         // Navy glow
+                                cursorColor: '0,80,157',      // Navy accent cursor
                                 cursorRadius: isMobile ? 70 : 120,
                                 cursorForce: isMobile ? 0.3 : 0.45,
                                 dotSize: isMobile ? [1.1, 2.2] : [1.6,3.2]
