@@ -541,3 +541,43 @@ a, button, input, textarea, .nav-link, .interactive-card {
     color: #ffffff !important;
     border-color: rgba(255, 255, 255, 0.25) !important;
 }
+
+/* Custom styling to ensure collaborate/contact section has a deep navy background and white text */
+#contact {
+    background-color: var(--secondary) !important;
+    color: #ffffff !important;
+    transition: background-color 0.4s ease;
+}
+
+#contact h2 {
+    color: #ffffff !important;
+}
+
+#contact p.lead {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+#contact .glass-panel {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+#contact label {
+    color: #ffffff !important;
+}
+
+#contact .glass-input {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+}
+
+#contact .glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+#contact .glass-input:focus {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1) !important;
+}
