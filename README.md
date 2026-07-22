@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# Amin Khan Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern personal portfolio website for Amin Khan, also known as Amin Turabi and aminturabi. The site highlights AI and machine learning work, project experience, education, skills, and contact details in a clean one-page layout.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Responsive single-page portfolio layout
+- Animated hero section with custom background effects
+- Dark and light theme toggle with saved preference
+- Sections for about, experience, projects, education, skills, and contact
+- SEO-friendly metadata and structured data for search visibility
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- HTML5
+- CSS3 with custom glassmorphism styling
+- Vanilla JavaScript
+- Bootstrap 5
+- Font Awesome
 
-## Expanding the ESLint configuration
+## Run Locally
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Open the `d:\Portfolio` folder in VS Code or File Explorer.
+2. Open `index.html` in your browser.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+If you want to preview it with a local server, you can use any simple static server, such as Live Server in VS Code.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Customize
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Update personal details in `index.html`.
+- Replace `DP.jpg` with your own profile image if needed.
+- Replace `Amin_Khan_Resume.pdf` with the latest resume file.
+- Update social links, project links, and contact details.
+- Adjust colors, spacing, and animation behavior in `style.css`.
+- Update interactive behavior in `script.js`.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Search Terms
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This portfolio intentionally includes name variants such as:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Amin
+- Amin Khan
+- Amin Turabi
+- aminturabi
+
+## Notes
+
+- The contact form uses FormSubmit for message delivery.
+- The page is designed as a static portfolio, so no build step is required.
+- If you publish it online, update the metadata URL in `index.html` to your real domain.
+
+## Deploy
+
+You can host this site on GitHub Pages, Netlify, Vercel, or any static hosting provider.
