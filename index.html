@@ -894,6 +894,20 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Custom JS -->
   <script src="script.js"></script>
+  <!-- RAGForge Portfolio Chatbot (Amin's own RAG system) -->
+  <script>
+    window.RAGForgeChatConfig = {
+      apiBase: "https://ragforge-live.onrender.com",
+      collection: "col_5a3d098f_amin-portfolio-kbtxt",
+      title: "Ask about Amin",
+      subtitle: "AI assistant - answers from Amin's portfolio",
+      welcomeMessage: "Hi! I'm Amin's portfolio assistant, powered by his own RAGForge system. Ask me about his projects, skills, experience, or how to hire him.",
+      placeholder: "e.g. What projects has Amin built?",
+      primaryColor: "#0d6efd",
+      position: "right"
+    };
+  </script>
+  <script src="https://ragforge-live.onrender.com/ragforge-chat.js" defer></script>
 </body>
 
 </html>
